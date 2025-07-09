@@ -1,5 +1,3 @@
-### Teste para candidatos à vagas de Frotend
-
 Desafio Ténico Frontend
 ---
 
