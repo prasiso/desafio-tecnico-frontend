@@ -20,7 +20,8 @@ const changeTabs = (tab: Tabs) => {
     <div>
         <div flex items-center>
             <span @click="changeTabs(props)" v-for="(props, index) of tabs" :key="index" px-2 py-3 m-0 font-semibold
-                class="text-[#64748B] border-label bg-white" :class="{ 'border-active': props.slot === value.slot, }">
+                class="text-[#64748B] border-label cursor-pointer
+ bg-white" :class="{ 'border-active': props.slot === value.slot, }">
                 {{ props.name }}
             </span>
 
