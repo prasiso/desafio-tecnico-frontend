@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { HeaderProps } from '../types';
+import BackGround from './BackGround.vue';
+
 
 withDefaults(defineProps<HeaderProps>(), {
     title: 'Área de tarefas Abertas',
@@ -8,8 +10,9 @@ withDefaults(defineProps<HeaderProps>(), {
 })
 </script>
 <template>
-    <div class="bg-[#F8FAFC] px-3 py-4 flex-nowrap items-center rounded-md">
+    <BackGround>
         <h2 w-full font-semibold>{{ title }}</h2>
         <p class="text-[#64748B]"> {{ description }}</p>
-    </div>
+    </BackGround>
+
 </template>
