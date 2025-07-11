@@ -5,11 +5,12 @@ import Tabs from "@/components/Tabs/Tabs.vue";
 import Section from "@/components/Section/Section.vue";
 import type { Tabs as TabsType } from "@/components/Tabs/Tabs.type";
 import type { SectionProps } from "@/components/Section/types";
+import { statuTask, statuTaskEnum } from "@/enums";
+import type { Task, TaskResponse } from "@/types";
+import { differenceTasks } from "@/helper";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const mockServerError = ref();
-const mockServerResp = ref();
 
 const tabs = ref<TabsType[]>(
   [
@@ -29,20 +30,29 @@ const propsConfigOpen = ref<SectionProps>({
   description: `Quando um fluxo iniciado por você ou por outra pessoa alcançar etapas sob sua responsabilidade, as tarefas
             serão exibidas aqui.`,
   title: 'Área de tarefas Abertas',
-  tasks: []
+  tasks: [],
+  totalTasks: 0
 })
 const propsConfigClosed = ref<SectionProps>({
   description: `Aqui vão aparecer as tarefas finalizadas por você.`,
   title: 'Área de tarefas finalizadas',
-  tasks: []
+  tasks: [],
+  totalTasks: 0
 })
 
 const testMockServer = async () => {
   try {
     const req = await fetch(`${API_URL}/tasks?_page=1&per_page=10`);
-    mockServerResp.value = await req.json();
+    const data: TaskResponse = await req.json();
+      propsConfigClosed.value.tasks = differenceTasks(data.data, [
+        statuTaskEnum.canceled,
+        statuTaskEnum.finished
+      ])
+      propsConfigOpen.value.tasks = differenceTasks(data.data, [
+        statuTaskEnum.pending,
+        statuTaskEnum.waiting
+      ])
   } catch (e: unknown) {
-    mockServerError.value = e;
   }
 };
 

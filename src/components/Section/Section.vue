@@ -16,5 +16,8 @@ const search = ref('')
     <div flex flex-wrap items-center justify-end>
         <Header :title="title" :description="description" class="mb-3 w-full" />
         <Search v-model="search" class="mb-3 w-full" />
+        <div class="mb-3">
+            <span font-bold class="text-[#334155]">{{ totalTasks }} <span font-normal>tarefas </span></span>
+        </div>
     </div>
 </template>
