@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from "vue";
+import Header from "@/components/Header/Header.vue";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -21,6 +22,7 @@ onBeforeMount(async () => {
 </script>
 
 <template>
+  <Header tabs-open="Abertas" />
   <div pa-6 bg-white w-full>
     <h1>Olá!</h1>
     <p>Leia o README.md e implemente as funcionalidade aqui.</p>
@@ -31,7 +33,7 @@ onBeforeMount(async () => {
       <div v-if="mockServerResp">
         <p>
           <span color-teal font-bold> Sucesso! </span>
-          O Servidor mock está rodando corretamente no caminho 
+          O Servidor mock está rodando corretamente no caminho
           <b>{{ API_URL }}</b>! 🎉
         </p>
       </div>
@@ -52,9 +54,7 @@ onBeforeMount(async () => {
 
     <div flex flex-col gap-1>
       <h3>UnoCSS Teste:</h3>
-      <span
-        >Se tiver ícones abaixo quer dizer que o UnoCSS está funcionando!</span
-      >
+      <span>Se tiver ícones abaixo quer dizer que o UnoCSS está funcionando!</span>
       <div flex gap-2>
         <div i-mdi:success color-teal size-6 />
         <div i-mdi:user color-blue size-6 />
