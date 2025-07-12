@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import type { Task } from '@/types';
 import Id from './Id.vue';
 import FieldCard from './FieldCard.vue';
 import Status from './Status.vue';
 import Button from '../Button.vue'
 import { transformDateToString } from '@/helper'
 import { typeForm } from '@/enums'
-const props = withDefaults(defineProps<Task>(), {})
+import type { CardsProps } from '../../types';
+const props = withDefaults(defineProps<CardsProps>(), {
+    isAccept: false
+})
 
 // Methods
 const accept = () => {
@@ -62,7 +64,7 @@ const see = () => {
             </FieldCard>
         </div>
         <div class="grid grid-cols-2 gap-2">
-            <Button label="Assumir" backgroundColor="#FDEAD7" border="0" @click="accept" />
+            <Button v-if="isAccept" label="Assumir" backgroundColor="#FDEAD7" border="0" @click="accept" />
             <Button label="Visualizar" backgroundColor="transparent" border="1px solid #CBD5E1" @click="see" />
         </div>
     </div>

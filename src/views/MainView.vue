@@ -31,7 +31,8 @@ const propsConfigOpen = ref<SectionProps>({
             serão exibidas aqui.`,
   title: 'Área de tarefas abertas',
   tasks: [],
-  totalTasks: 0
+  totalTasks: 0,
+  isAccept: true
 })
 const propsConfigClosed = ref<SectionProps>({
   description: `Aqui vão aparecer as tarefas finalizadas por você.`,

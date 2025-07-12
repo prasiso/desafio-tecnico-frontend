@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<SectionProps>(), {
     title: '',
     description: '',
     totalTasks: 0,
+    isAccept: false,
     tasks: () => []
 })
 
@@ -43,5 +44,5 @@ watch(() => search.value, (value) => {
             <span font-bold class="text-[#334155]">{{ tasks.length }} <span font-normal>tarefas </span></span>
         </div>
     </div>
-    <Card v-for="(item) of tasks" :key="item.id" v-bind="item" class="mb-4" />
+    <Card v-for="(item) of tasks" :key="item.id" v-bind="item" :is-accept="isAccept" class="mb-4" />
 </template>
