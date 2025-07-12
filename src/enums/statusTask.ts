@@ -13,7 +13,7 @@ export const statuTask = {
             icon: 'i-mdi:clock-time-four-outline',
             color: '#FEF7C3' as '#FEF7C3'
         },
-        name: 'Agurdando'
+        name: 'Aguardando'
     },
     finished: {
         value: 'finished' as statusTaskEnum.finished,

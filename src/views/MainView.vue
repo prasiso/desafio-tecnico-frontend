@@ -29,7 +29,7 @@ const tabValue = ref<TabsType>(tabs.value[0])
 const propsConfigOpen = ref<SectionProps>({
   description: `Quando um fluxo iniciado por você ou por outra pessoa alcançar etapas sob sua responsabilidade, as tarefas
             serão exibidas aqui.`,
-  title: 'Área de tarefas Abertas',
+  title: 'Área de tarefas abertas',
   tasks: [],
   totalTasks: 0
 })
