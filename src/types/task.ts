@@ -1,4 +1,4 @@
-import type { statuTaskEnum } from "@/enums"
+import type { statusTaskEnum } from "@/enums"
 
 export interface TaskResponse {
   "first": 1 | 0,
@@ -13,9 +13,9 @@ export interface Task {
   "id": string,
   "str_automation_name": string,
   "str_step_name": string,
-  "str_task_status": statuTaskEnum,
+  "str_task_status": statusTaskEnum,
   "str_step_type": "approval",
-  "ts_created_at": string | Date,
-  "ts_finished_at": string | Date,
+  "ts_created_at": string | Date | null,
+  "ts_finished_at"?: string | Date | null,
   "str_step_label": null | string
 }

@@ -5,7 +5,7 @@ import Tabs from "@/components/Tabs/Tabs.vue";
 import Section from "@/components/Section/Section.vue";
 import type { Tabs as TabsType } from "@/components/Tabs/Tabs.type";
 import type { SectionProps } from "@/components/Section/types";
-import { statuTask, statuTaskEnum } from "@/enums";
+import { statuTask, statusTaskEnum } from "@/enums";
 import type { Task, TaskResponse } from "@/types";
 import { differenceTasks } from "@/helper";
 
@@ -45,14 +45,14 @@ const testMockServer = async () => {
     const req = await fetch(`${API_URL}/tasks?_page=1&_per_page=10`);
     const data: TaskResponse = await req.json();
     const tasksClosed = differenceTasks(data.data, [
-      statuTaskEnum.canceled,
-      statuTaskEnum.finished
+      statusTaskEnum.canceled,
+      statusTaskEnum.finished
     ])
     propsConfigClosed.value.tasks = tasksClosed
     propsConfigClosed.value.totalTasks = tasksClosed.length
     const taskOpen = differenceTasks(data.data, [
-      statuTaskEnum.pending,
-      statuTaskEnum.waiting
+      statusTaskEnum.pending,
+      statusTaskEnum.waiting
     ])
     propsConfigOpen.value.totalTasks = taskOpen.length
     propsConfigOpen.value.tasks = taskOpen
