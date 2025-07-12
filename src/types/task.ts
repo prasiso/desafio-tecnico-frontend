@@ -19,3 +19,5 @@ export interface Task {
   "ts_finished_at"?: string | Date | null,
   "str_step_label": null | string
 }
+
+export type TaskSearch = 'str_automation_name' | 'str_step_name' | 'str_step_label'

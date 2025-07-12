@@ -18,9 +18,9 @@ const see = () => {
 </script>
 <template>
     <div
-        class="flex flex-col items-center justify-between p-5 bg-[#FAFAF9] border border-solid border-[#CBD5E1] rounded-md gap-4  md:flex-row md:items-center md:justify-between">
+        class="flex flex-col items-center justify-between p-5 bg-[#FAFAF9] border border-solid border-[#CBD5E1] rounded-md gap-4  lg:flex-row lg:items-center lg:justify-between">
         <Id :id="id" />
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2 flex-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 flex-1">
             <FieldCard label="Fluxo" :value="str_automation_name" />
             <FieldCard>
                 <template #header>
@@ -55,8 +55,8 @@ const see = () => {
                     </span>
                 </template>
                 <template #value>
-                    <p m-0 font-semibold :class="{ 'text-[#CBD5E1]': !str_step_label }">
-                        {{ str_step_label ? str_step_label : 'Sem etiqueta' }}
+                    <p m-0 font-semibold :class="{ 'text-[#CBD5E1]': str_step_label === 'Sem etiqueta' }">
+                        {{ str_step_label  }}
                     </p>
                 </template>
             </FieldCard>

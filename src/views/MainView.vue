@@ -44,6 +44,9 @@ const testMockServer = async () => {
   try {
     const req = await fetch(`${API_URL}/tasks?_page=1&_per_page=10`);
     const data: TaskResponse = await req.json();
+    data.data.forEach(task => {
+      task.str_step_label = !task.str_step_label ? 'Sem etiqueta' : task.str_step_label
+    })
     const tasksClosed = differenceTasks(data.data, [
       statusTaskEnum.canceled,
       statusTaskEnum.finished
