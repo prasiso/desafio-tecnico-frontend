@@ -2,8 +2,9 @@
 import { ref } from 'vue';
 import Header from './components/Header.vue';
 import Search from './components/Search.vue';
+import Card from './components/Card/Card.vue';
 import type { SectionProps } from './types/Section'
-const props = withDefaults(defineProps<SectionProps>(), {
+withDefaults(defineProps<SectionProps>(), {
     title: '',
     description: '',
     totalTasks: 0,
@@ -20,4 +21,5 @@ const search = ref('')
             <span font-bold class="text-[#334155]">{{ totalTasks }} <span font-normal>tarefas </span></span>
         </div>
     </div>
+    <Card v-for="(item) of tasks" :key="item.id" v-bind="item" class="mb-4" />
 </template>

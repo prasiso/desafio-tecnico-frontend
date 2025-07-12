@@ -42,16 +42,20 @@ const propsConfigClosed = ref<SectionProps>({
 
 const testMockServer = async () => {
   try {
-    const req = await fetch(`${API_URL}/tasks?_page=1&per_page=10`);
+    const req = await fetch(`${API_URL}/tasks?_page=1&_per_page=10`);
     const data: TaskResponse = await req.json();
-      propsConfigClosed.value.tasks = differenceTasks(data.data, [
-        statuTaskEnum.canceled,
-        statuTaskEnum.finished
-      ])
-      propsConfigOpen.value.tasks = differenceTasks(data.data, [
-        statuTaskEnum.pending,
-        statuTaskEnum.waiting
-      ])
+    const tasksClosed = differenceTasks(data.data, [
+      statuTaskEnum.canceled,
+      statuTaskEnum.finished
+    ])
+    propsConfigClosed.value.tasks = tasksClosed
+    propsConfigClosed.value.totalTasks = tasksClosed.length
+    const taskOpen = differenceTasks(data.data, [
+      statuTaskEnum.pending,
+      statuTaskEnum.waiting
+    ])
+    propsConfigOpen.value.totalTasks = taskOpen.length
+    propsConfigOpen.value.tasks = taskOpen
   } catch (e: unknown) {
   }
 };

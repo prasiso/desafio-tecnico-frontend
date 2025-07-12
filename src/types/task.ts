@@ -1,12 +1,12 @@
-import type { statusType, statuTaskEnum } from "@/enums"
+import type { statuTaskEnum } from "@/enums"
 
 export interface TaskResponse {
   "first": 1 | 0,
   "prev": 1 | 0,
-  "next": Number,
-  "last": Number,
-  "pages": Number,
-  "items": Number,
+  "next": number,
+  "last": number,
+  "pages": number,
+  "items": number,
   "data": Task[]
 }
 export interface Task {
